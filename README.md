@@ -52,13 +52,13 @@ pip install -r requirements.txt
 2. **Run Prompt-Engineered Judge**
 
 ```bash
-python prompt_engineered_judge_main.py --input_file dataset/test_set.json
+python prompt_engineered_judge_main.py
 ```
 
 3. **Run Agentic Judge**
 
 ```bash
-python agentic_judge_main.py --input_file dataset/test_set.json
+python agentic_judge_main.py
 ```
 
 4. **View Outputs**
