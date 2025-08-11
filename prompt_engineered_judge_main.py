@@ -113,7 +113,6 @@ OUTPUT FORMAT — return JSON ONLY (no prose/backticks). Exactly this schema:
 """Load the model"""
 
 client = OpenAI(
-    api_key="AIzaSyAzrz2ZORUKReonxTJ0tEIHR_IXDWRBqPY",
     base_url="https://generativelanguage.googleapis.com/v1beta/openai/"
 )
 

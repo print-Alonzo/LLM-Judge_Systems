@@ -28,7 +28,7 @@ class TranslationEvaluation(BaseModel):
         ..., description="Detailed, point-by-point reasoning for the score, citing specific examples from the text."
     )
 
-search_tool = TavilySearchResults(k=1, tavily_api_key="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")
+search_tool = TavilySearchResults(k=1)
 search_tool.description = (
     "Use this to search for definitions, synonyms, or cultural context of specific English or Filipino words and phrases. Mention the word TRANSLATE so that tavily knows that your looking for the counterpart of that word like \"Translate 'food' in Filino\"."
 )
