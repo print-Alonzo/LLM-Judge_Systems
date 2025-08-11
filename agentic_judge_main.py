@@ -42,8 +42,8 @@ def opinion_pooling_tool(source_text: str, translated_text: str, reference_text:
     print("\n--- CONSULTING EXPENSIVE OPINION POOLING TOOL ---")
     
     # judge models
-    gemini_judge = ChatGoogleGenerativeAI(model="gemini-2.5-pro", temperature=0.2, api_key="AIzaSyAzrz2ZORUKReonxTJ0tEIHR_IXDWRBqPY")
-    chatgpt_judge = ChatOpenAI(model="gpt-4o", temperature=0.2, api_key="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") # Using a different GPT model
+    gemini_judge = ChatGoogleGenerativeAI(model="gemini-2.5-pro", temperature=0.2)
+    chatgpt_judge = ChatOpenAI(model="gpt-4o", temperature=0.2) # Using a different GPT model
 
     judge_prompt = ChatPromptTemplate.from_template(
         """You are a rigorous, impartial English→Filipino translation judge with deep expertise in Filipino grammar, style, and cultural nuance. Evaluate ONLY the given source/translation using the criteria below. Favor idiomatic Filipino that preserves meaning. Penalize omissions/additions, mistranslations (polarity/negation, tense/aspect, quantities, named entities), awkward calques, unjustified Taglish, and register mismatches. Do NOT rewrite the translation—only judge it. When uncertain, choose the lower score and justify briefly with evidence. Assume formal register unless stated otherwise. If no domain/style guide is provided, use general editorial norms as the guideline.
@@ -285,7 +285,7 @@ Please reason before answering like why thats your score for the criteria. After
 )
 
 
-llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash-lite", temperature=0.1, api_key="AIzaSyAzrz2ZORUKReonxTJ0tEIHR_IXDWRBqPY")
+llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash-lite", temperature=0.1)
 
 agent = create_openai_tools_agent(llm, tools, prompt_template)
 
