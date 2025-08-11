@@ -1,0 +1,18 @@
+{
+  "source": "It's raining cats and dogs",
+  "translation": "umuulan ng pusa at aso",
+  "evaluation": {
+    "criteria": {
+      "accuracy": 0,
+      "fluency": 1,
+      "coherence": 1,
+      "cultural_appropriateness": 0,
+      "guideline_adherence": 1,
+      "completeness": 0
+    },
+    "total_points": 3,
+    "overall_score": 3,
+    "label": "good",
+    "explanation": "Accuracy and Completeness are 0 due to literal translation of idiom 'raining cats and dogs' which results in nonsensical meaning in Filipino. Fluency and Coherence are 1 as the sentence structure is grammatically sound. Cultural Appropriateness is 0 as it's an awkward calque. Guideline Adherence is 1 as no specific guidelines were violated beyond the general expectation of idiomatic translation."
+  }
+}

@@ -29,14 +29,17 @@ The goal is to explore the strengths and limitations of each approach, particula
 
 ```
 📦 llm-judge_systems
-├── agentic_judge_main.py           # Agentic LLM-Judge script
-├── prompt_engineered_judge_main.py# Prompt-engineered LLM-Judge script
-├── agent_tools.py                  # Custom Python tools used by agentic judge
-├── evaluation_criteria.json        # Criteria and scoring rubrics
-├── dataset/                        # Source and target translation test pairs
-├── outputs/                        # JSON evaluations from both systems
-├── paper/                          # Conference paper (IEEE/ACL format)
-└── README.md                       # Project documentation
+├── agentic_judge_main.py                     # Agentic LLM-Judge script
+├── prompt_engineered_judge_main.py           # Prompt-engineered LLM-Judge script
+├── agentic_judge_main_experiments.ipynb      # Jupyter Notebook for the main experiments with the Agentic LLM
+├── dataset/                                  # Contains the dataset used for few-shot prompting and evaluation
+    ├── knowledge.csv                         # Dataset used for few-shot prompting
+    ├── validation.csv                        # Dataset used for model evaluation
+├── outputs/                                  # Contains the output JSON files from demonstration
+    ├── agentic_ai_evaluation_i.json          # ith JSON Output file from the agentic LLM judge
+    ├── prompt_engineered_evaluation_i.json   # ith JSON Output file from the prompt-engineered LLM judge
+├── requirements.txt                          # Contains the dependencies
+├── README.md                                 # Project documentation
 ```
 
 ---
@@ -61,10 +64,6 @@ python prompt_engineered_judge_main.py
 python agentic_judge_main.py
 ```
 
-4. **View Outputs**
-
-Structured results (scores and explanations) will be saved in the `outputs/` directory as `.json` files.
-
 ---
 
 ## 📊 Evaluation Criteria
@@ -77,26 +76,9 @@ The LLM Judges evaluate translations on the following dimensions:
 * **Cultural Appropriateness**: Does the translation respect Filipino cultural norms, idioms, and sensitivities (e.g., use of "po" and "opo" for respect, regional expressions)? (1 point)
 * **Guideline Adherence**: Does the translation follow domain-specific style, terminology, or guidelines (e.g., legal terms, medical precision in Filipino)? (1 point)
 * **Completeness**: Are all elements of the English source text translated into Filipino without omissions or additions? (1 point)
-* **Scoring**: For a final score, individual criteria points are summed up and normalize to a 1-5 scale (e.g., 5-6 = 5, 3-4 = 3, 0-2 = 1) , paired with a label: "excellent" (5), "good" (3-4), "poor" (1-2).
+* **Scoring**: For a final score, individual criteria points are summed up and normalize to a 1-5 scale.
 
 Each is scored from 1 (poor) to 5 (excellent), with supporting justifications.
-
----
-
-## 📈 Comparison & Insights
-
-Our research paper includes:
-
-* **Quantitative comparison**: Scores across criteria, consistency, and human alignment
-* **Qualitative analysis**: Side-by-side output samples and breakdown of reasoning
-* **Design reflections**: Challenges in memory, orchestration, and prompt strategy
-* **Trade-offs**: Simplicity vs. modularity, interpretability vs. control
-
----
-
-## 📚 Reference
-
-Gu, J., Lee, S., Deng, Y., & Liang, P. (2025). *A Survey on LLM-as-a-Judge: Evaluation without Ground Truth.* [arXiv:2501.01234](https://arxiv.org/html/2411.15594v1).
 
 ---
 
