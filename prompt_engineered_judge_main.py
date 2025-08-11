@@ -12,7 +12,9 @@ from openai import OpenAI
 import time
 from itertools import islice
 import json
+from dotenv import load_dotenv
 
+load_dotenv()
 
 """The Prompt Template used for Evaluation"""
 
@@ -113,6 +115,7 @@ OUTPUT FORMAT — return JSON ONLY (no prose/backticks). Exactly this schema:
 """Load the model"""
 
 client = OpenAI(
+    api_key=os.getenv("GEMINI_API_KEY"),
     base_url="https://generativelanguage.googleapis.com/v1beta/openai/"
 )
 

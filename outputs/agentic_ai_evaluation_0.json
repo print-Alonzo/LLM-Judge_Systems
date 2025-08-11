@@ -7,12 +7,12 @@
       "fluency": 1,
       "coherence": 0,
       "cultural_appropriateness": 0,
-      "guideline_adherence": 1,
+      "guideline_adherence": 0,
       "completeness": 0
     },
-    "total_points": 2,
-    "overall_score": 2,
-    "label": "fair",
-    "explanation": "The translation is a literal rendition of an English idiom, resulting in a nonsensical phrase in Filipino. It fails to convey the intended meaning of heavy rain and lacks cultural appropriateness."
+    "total_points": 1,
+    "overall_score": 1,
+    "label": "poor",
+    "explanation": "The translation is a literal rendering of an English idiom, resulting in a nonsensical phrase in Filipino. It fails to convey the intended meaning of heavy rain, making it inaccurate, incoherent, and culturally inappropriate."
   }
 }

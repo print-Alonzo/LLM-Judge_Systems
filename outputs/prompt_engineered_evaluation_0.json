@@ -13,6 +13,6 @@
     "total_points": 3,
     "overall_score": 3,
     "label": "good",
-    "explanation": "Accuracy and Completeness are 0 due to literal translation of idiom 'raining cats and dogs' which results in nonsensical meaning in Filipino. Fluency and Coherence are 1 as the sentence structure is grammatically sound. Cultural Appropriateness is 0 as it's an awkward calque. Guideline Adherence is 1 as no specific guidelines were violated beyond the general expectation of idiomatic translation."
+    "explanation": "Accuracy and Completeness are 0 because the idiom 'raining cats and dogs' is literally translated, failing to convey the meaning of heavy rain. Cultural Appropriateness is 0 due to the literal calque of a foreign idiom. Fluency and Guideline Adherence are 1 as the Filipino grammar is correct and no external guidelines were violated."
   }
 }

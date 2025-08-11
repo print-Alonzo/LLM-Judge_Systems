@@ -28,7 +28,7 @@ class TranslationEvaluation(BaseModel):
         ..., description="Detailed, point-by-point reasoning for the score, citing specific examples from the text."
     )
 
-search_tool = TavilySearchResults(k=1)
+search_tool = TavilySearchResults(k=1, api_key=os.getenv("TAVILY_API_KEY"))
 search_tool.description = (
     "Use this to search for definitions, synonyms, or cultural context of specific English or Filipino words and phrases. Mention the word TRANSLATE so that tavily knows that your looking for the counterpart of that word like \"Translate 'food' in Filino\"."
 )
@@ -42,8 +42,8 @@ def opinion_pooling_tool(source_text: str, translated_text: str, reference_text:
     print("\n--- CONSULTING EXPENSIVE OPINION POOLING TOOL ---")
     
     # judge models
-    gemini_judge = ChatGoogleGenerativeAI(model="gemini-2.5-pro", temperature=0.2)
-    chatgpt_judge = ChatOpenAI(model="gpt-4o", temperature=0.2) # Using a different GPT model
+    gemini_judge = ChatGoogleGenerativeAI(model="gemini-2.5-pro", temperature=0.2, api_key=os.getenv("GEMINI_API_KEY"))
+    chatgpt_judge = ChatOpenAI(model="gpt-4o", temperature=0.2, api_key=os.getenv("OPENAI_API_KEY")) # Using a different GPT model
 
     judge_prompt = ChatPromptTemplate.from_template(
         """You are a rigorous, impartial English→Filipino translation judge with deep expertise in Filipino grammar, style, and cultural nuance. Evaluate ONLY the given source/translation using the criteria below. Favor idiomatic Filipino that preserves meaning. Penalize omissions/additions, mistranslations (polarity/negation, tense/aspect, quantities, named entities), awkward calques, unjustified Taglish, and register mismatches. Do NOT rewrite the translation—only judge it. When uncertain, choose the lower score and justify briefly with evidence. Assume formal register unless stated otherwise. If no domain/style guide is provided, use general editorial norms as the guideline.
@@ -285,7 +285,7 @@ Please reason before answering like why thats your score for the criteria. After
 )
 
 
-llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash-lite", temperature=0.1)
+llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash-lite", temperature=0.1, api_key=os.getenv("GEMINI_API_KEY"))
 
 agent = create_openai_tools_agent(llm, tools, prompt_template)
 
@@ -298,13 +298,12 @@ agent_executor = AgentExecutor(
 
 def extract_json_from_text(text: str):
     # Regex: match a { ... } block, including nested braces
-    match = re.search(r'FINAL:\s*({.*?})', text, re.DOTALL)
+    match = re.search(r'\{.*\}', text, re.DOTALL)
     if not match:
-        match = re.search(r'({.*})', text, re.DOTALL)
-        if not match:
-            raise ValueError("No 'FINAL:' marker or JSON object found in the input string.")
+        raise ValueError("No JSON object found in text.")
+
+    json_str = match.group(0).strip()
     
-    json_str = match.group(1)
     try:
         return json.loads(json_str)
     except json.JSONDecodeError as e:
